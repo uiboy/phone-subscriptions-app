@@ -141,12 +141,56 @@ nav a.router-link-active {
   font-family: Arial, Helvetica, sans-serif; 
 }
 
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
 input[type=radio] {
   margin: 0px 10px;
 }
 
-.subscription-list {
+.subscription-list-container {
+  float: left;
   width: 60%;
 }
+
+.subscription-list {
+  width: 100%;
+}
+
+.product-details-container {
+  width: 25%;
+  border: 1px solid #CCC;
+  float: left;
+  min-height: 500px;
+}
+
+.product-images {
+  min-height: 350px;
+}
+
+.price-details {
+  padding: 10px;
+  background-color: #CCC;
+}
+
+.price-details .details-row .amount-label {
+  float: left;
+  width: 88%;
+}
+
+.price-details .details-row .amount {
+  float: right;
+}
+
+
+
+
 
 

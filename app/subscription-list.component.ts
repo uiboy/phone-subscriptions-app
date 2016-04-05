@@ -3,27 +3,30 @@ import {Component, Input} from 'angular2/core';
 @Component({
     selector: 'subscription-list',
     template: `
-    <table class="table subscription-list">
-    	<thead>
-    	<tr>
-    		<th>Name</th>
-    		<th>Minutes/Sms</th>
-    		<th>Internet/Data</th>
-    		<th>Device Price</th>
-    		<th>Costs/month</th>
-    	</tr>
-    	</thead>
-    	<tbody>
-    	<tr *ngFor="#s of subscriptions">
-    		<td><input type="radio" name="subscription" (click)="onSelectSubscription(s)"/>{{s.name}}</td>
-    		<td>{{s.volume}}</td>
-    		<td>{{s.data}}</td>
-    		<td>{{s.device_discount}}</td>
-    		<td>{{s.price}}</td>
-    		<td>{{s.price_discount}}</td>
-    	</tr>
-    	</tbody>
-    </table>
+    <div class="subscription-list-container">
+	    <h1>KPN Assignment</h1>
+	    <table class="table subscription-list">
+	    	<thead>
+	    	<tr>
+	    		<th>Name</th>
+	    		<th>Minutes/Sms</th>
+	    		<th>Internet/Data</th>
+	    		<th>Device Price</th>
+	    		<th>Costs/month</th>
+	    	</tr>
+	    	</thead>
+	    	<tbody>
+	    	<tr *ngFor="#s of subscriptions">
+	    		<td><input type="radio" name="subscription" (click)="onSelectSubscription(s)"/>{{s.name}}</td>
+	    		<td>{{s.volume}}</td>
+	    		<td>{{s.data}}</td>
+	    		<td>{{s.device_discount}}</td>
+	    		<td>{{s.price}}</td>
+	    		<td>{{s.price_discount}}</td>
+	    	</tr>
+	    	</tbody>
+	    </table>
+	</div> 
     `
 })
 

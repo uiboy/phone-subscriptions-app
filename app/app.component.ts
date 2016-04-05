@@ -1,12 +1,14 @@
 import {Component} from 'angular2/core';
 import {SubscriptionListComponent} from './subscription-list.component';
+import {ProductSummaryComponent} from './product-summary.component';
 
 @Component({
     selector: 'kpn-app',
-    template: `<h1>KPN Assignment</h1>
+    template: `
     <subscription-list></subscription-list>
+    <product-summary></product-summary>
     `,
-    directives: [SubscriptionListComponent]
+    directives: [SubscriptionListComponent, ProductSummaryComponent]
 })
 
 export class AppComponent { 
