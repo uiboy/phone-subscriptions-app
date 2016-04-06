@@ -1,10 +1,11 @@
 import {Component, Input} from 'angular2/core';
+import {Subscription} from './subscription';
 
 @Component({
     selector: 'product-summary',
-    templateUrl: './templates/product_summary.html'
+    templateUrl: './app/templates/product_summary.html'
 })
 
 export class ProductSummaryComponent {
-
+    @Input() selectedSubscription: Subscription;
 }

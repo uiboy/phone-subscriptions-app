@@ -158,10 +158,12 @@ input[type=radio] {
 .subscription-list-container {
   float: left;
   width: 60%;
+  color: #333;
 }
 
 .subscription-list {
   width: 100%;
+  color: #333;
 }
 
 .product-details-container {
@@ -175,17 +177,28 @@ input[type=radio] {
   min-height: 350px;
 }
 
-.price-details {
+.price-details, .subscription-summary {
   padding: 10px;
-  background-color: #CCC;
+  background-color: #f1f1f1;
+  color:#333;
+}
+.details-row {
+  margin: 10px auto;
+}
+/* clearfix for details row */
+
+.details-row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
-.price-details .details-row .amount-label {
+.details-row .amount-label {
   float: left;
   width: 88%;
 }
 
-.price-details .details-row .amount {
+.details-row .amount {
   float: right;
 }
 

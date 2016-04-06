@@ -1,10 +1,12 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input, Output, EventEmitter} from 'angular2/core';
+import {ProductData} from './product-data';
+import {Subscription} from './subscription';
 
 @Component({
     selector: 'subscription-list',
     template: `
     <div class="subscription-list-container">
-	    <h1>KPN Assignment</h1>
+	    <h1>App</h1>
 	    <table class="table subscription-list">
 	    	<thead>
 	    	<tr>
@@ -16,11 +18,11 @@ import {Component, Input} from 'angular2/core';
 	    	</tr>
 	    	</thead>
 	    	<tbody>
-	    	<tr *ngFor="#s of subscriptions">
+	    	<tr *ngFor="#s of productData.subscription_list">
 	    		<td><input type="radio" name="subscription" (click)="onSelectSubscription(s)"/>{{s.name}}</td>
 	    		<td>{{s.volume}}</td>
 	    		<td>{{s.data}}</td>
-	    		<td>{{s.device_discount}}</td>
+	    		<td>{{productData.getFinalDevicePrice(s.device_discount)}}</td>
 	    		<td>{{s.price}}</td>
 	    		<td>{{s.price_discount}}</td>
 	    	</tr>
@@ -31,49 +33,11 @@ import {Component, Input} from 'angular2/core';
 })
 
 export class SubscriptionListComponent {
-	public subscriptions = SUBSCRIPTIONS;
+	@Input() productData: ProductData;
+	@Output() selectionChanged = new EventEmitter();
 
-	onSelectSubscription(s: Subscription) {
-		console.log(s);
+	onSelectSubscription(selected: Subscription) {
+		console.log(selected);
+		this.selectionChanged.emit(selected);
 	}
 }
-
-export class Subscription {
-	id: number;
-	name: string;
-	volume: string;
-	data: integer;
-	device_discount: integer; 
-	price: integer;
-	price_discount: integer;
-}
-
-var SUBSCRIPTIONS: Subscription[] = [
-	{
-	 	"id": 1,
-		"name": "Basis Mobiel",
-		"volume": "150 min or sms",
-		"data": 500,
-		"device_discount": 220,
-		"price": 44,
-		"price_discount": 10,
- 	},
- 	{
-	 	"id": 2,
-		"name": "Basis",
-		"volume": "190 min or sms",
-		"data": 400,
-		"device_discount": 200,
-		"price": 45,
-		"price_discount": 20,
- 	},
- 	{
-	 	"id": 3,
-		"name": "Mobiel",
-		"volume": "250 min or sms",
-		"data": 2000,
-		"device_discount": 220,
-		"price": 44,
-		"price_discount": 10,
- 	}
-];
