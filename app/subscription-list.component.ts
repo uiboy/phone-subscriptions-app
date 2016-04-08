@@ -6,7 +6,7 @@ import {Subscription} from './subscription';
     selector: 'subscription-list',
     template: `
     <div class="subscription-list-container">
-	    <h1>App</h1>
+	    <h1>{{productData.name}}</h1>
 	    <table class="table subscription-list">
 	    	<thead>
 	    	<tr>
@@ -19,12 +19,11 @@ import {Subscription} from './subscription';
 	    	</thead>
 	    	<tbody>
 	    	<tr *ngFor="#s of productData.subscription_list">
-	    		<td><input type="radio" name="subscription" (click)="onSelectSubscription(s)"/>{{s.name}}</td>
+	    		<td><input type="radio" [attr.checked] = "selectedSubscription.id==s.id ? 'checked' : ''" name="subscription" (click)="onSelectSubscription(s)"/>{{s.name}}</td>
 	    		<td>{{s.volume}}</td>
-	    		<td>{{s.data}}</td>
-	    		<td>{{productData.getFinalDevicePrice(s.device_discount)}}</td>
-	    		<td>{{s.price}}</td>
-	    		<td>{{s.price_discount}}</td>
+	    		<td>{{s.getDataString(s.data)}}</td>
+	    		<td>&euro; {{productData.getFinalDevicePrice(s.device_discount)}}</td>
+	    		<td class="discount-color"><span class="strikeout">&euro; {{s.price}}</span>&euro; {{s.getTotalPerMonth()}}</td>
 	    	</tr>
 	    	</tbody>
 	    </table>
@@ -33,11 +32,19 @@ import {Subscription} from './subscription';
 })
 
 export class SubscriptionListComponent {
+	/**
+	 * Input/Output used to communicate between components
+	 * in angular 2 
+	 * @type {[type]}
+	 */
 	@Input() productData: ProductData;
+	@Input() selectedSubscription: Subscription;
 	@Output() selectionChanged = new EventEmitter();
 
 	onSelectSubscription(selected: Subscription) {
 		console.log(selected);
 		this.selectionChanged.emit(selected);
 	}
+
+
 }

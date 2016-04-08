@@ -24,4 +24,11 @@ export class Subscription {
 	getTotalPerMonth() {
 		return this.price - this.price_discount;
 	};
+
+	getDataString(mb) {
+		if (mb > 1000) {
+			return mb/1000 + " GB";	
+		} 
+		return mb + " MB";
+	}
 }

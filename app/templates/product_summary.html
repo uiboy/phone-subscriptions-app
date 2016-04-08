@@ -1,9 +1,19 @@
 <div class="product-details-container">
-    <section class="product-images">
+     <section class="product-images-section">
+        <div class="images-container">
+            <div [ngClass]="{selected: selectedThumbnail == i}" *ngFor="#image_url of productData.images_list; #i=index" class="wrapper">
+                <img class="product-image" src="{{image_url}}"/>
+            </div>
+        </div>
+        <ul class="thumbnail-list">
+            <li (click)="onSelectThumbnail(i)" *ngFor="#image_url of productData.images_list; #i=index" class="thumbnail-li">
+                <img class="product-image" src="{{image_url}}"/>
+            </li>
+        </ul>
     </section>
     <section class="price-details clearfix">
         <div class="details-row">
-            <span class="amount-label text-bold">Total monthly costs {{selectedSubscription.id}}</span>
+            <span class="amount-label text-bold">Total monthly costs</span>
             <span class="amount text-bold">&euro; {{ selectedSubscription.getTotalPerMonth() }}</span>
         </div>
          <div class="details-row">
@@ -18,21 +28,21 @@
         </div> 
          <div class="details-row">
             <span class="amount-label text-bold">Basies Mobiel</span>
-            <span class="amount text-bold">&euro; 64</span>
+            <span class="amount text-bold">&euro; {{ selectedSubscription.price }}</span>
         </div> 
          <div class="details-row">
             <span class="amount-label">Discount as long as your subscription runs</span>
-             <span class="amount">&euro; 10</span>
+             <span class="amount discount-color">&euro; {{ selectedSubscription.price_discount }}</span>
         </div> 
         <div class="details-row">
             <span class="amount-label">One Off</span>
         </div> 
         <div class="details-row">
-            <span class="amount-label text-bold">Apple iPhone 6s 64GB silver</span>
-            <span class="amount">&euro; 199</span>
+            <span class="amount-label text-bold">{{ productData.name }}</span>
+            <span class="amount discount-color">&euro; {{ productData.getFinalDevicePrice(selectedSubscription.device_discount) }}</span>
         </div> 
         <div class="details-row">
-            <span class="amount-label">Original &euro; 729 </span>
+            <span class="amount-label">Original &euro; {{ productData.device_original_price}} </span>
         </div> 
     </section>
 </div>

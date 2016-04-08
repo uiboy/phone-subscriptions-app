@@ -166,6 +166,16 @@ input[type=radio] {
   color: #333;
 }
 
+.strikeout {
+  text-decoration: line-through;
+  margin-right: 10px;
+  color: #333;
+}
+
+.discount-color {
+  color: orange;
+}
+
 .product-details-container {
   width: 25%;
   border: 1px solid #CCC;
@@ -173,8 +183,52 @@ input[type=radio] {
   min-height: 500px;
 }
 
-.product-images {
+.product-images-section {
   min-height: 350px;
+  overflow: hidden;
+  padding: 10px;
+  position: relative;
+  background: #CCC;
+}
+
+.images-container {
+    width: 300%; 
+    position: relative;
+}
+
+.thumbnail-list {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    list-style-type: none;
+}
+
+.thumbnail-li {
+  margin: 10px;
+  width: 50px;
+  padding: 5px;
+  background: #fff;
+  border-radius: 20%;
+  cursor: pointer;
+}
+
+.thumbnail-li .product-image {
+    width: 50%;
+}
+
+.product-images-section .wrapper {
+  width: 33%;
+  display: none;
+}
+
+.wrapper.selected {
+  display: block;
+}
+
+.product-images-section .product-image {
+    width: 60%;
+    margin: 0px auto;
+    display: block;   
 }
 
 .price-details, .subscription-summary {
