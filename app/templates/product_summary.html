@@ -10,6 +10,9 @@
                 <img class="product-image" src="{{image_url}}"/>
             </li>
         </ul>
+        <div class="price-label"> <span class="small-text">phone</span>
+            <span>&euro;  {{productData.getFinalDevicePrice(selectedSubscription.device_discount)}},-</span>
+        </div>
     </section>
     <section class="price-details clearfix">
         <div class="details-row">
@@ -18,7 +21,7 @@
         </div>
          <div class="details-row">
             <span class="amount-label">Total one off</span>
-            <span class="amount">&euro; 199</span>
+            <span class="amount">&euro; {{productData.getFinalDevicePrice(selectedSubscription.device_discount)}},- </span>
         </div>
         <button class="btn btn-primary">Bestellen</button>
     </section>

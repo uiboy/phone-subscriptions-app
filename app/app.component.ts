@@ -25,7 +25,7 @@ export class AppComponent {
 	constructor(productService: ProductService) {
 		productService.getProductDetails().subscribe(res => {
 			this.productData = res;
-			this.selectedSubscription = this.productData.subscription_list[0];
+			this.selectedSubscription = this.productData.subscription_list[5];
 		});
 	}
 

@@ -19,7 +19,7 @@ import {Subscription} from './subscription';
 	    	</thead>
 	    	<tbody>
 	    	<tr *ngFor="#s of productData.subscription_list">
-	    		<td><input type="radio" [attr.checked] = "selectedSubscription.id==s.id ? 'checked' : ''" name="subscription" (click)="onSelectSubscription(s)"/>{{s.name}}</td>
+	    		<td><input type="radio" [attr.checked]="selectedSubscription.id == s.id" name="subscription" (click)="onSelectSubscription(s)"/>{{s.name}}</td>
 	    		<td>{{s.volume}}</td>
 	    		<td>{{s.getDataString(s.data)}}</td>
 	    		<td>&euro; {{productData.getFinalDevicePrice(s.device_discount)}}</td>
@@ -45,6 +45,4 @@ export class SubscriptionListComponent {
 		console.log(selected);
 		this.selectionChanged.emit(selected);
 	}
-
-
 }

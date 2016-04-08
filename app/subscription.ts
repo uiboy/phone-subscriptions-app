@@ -26,7 +26,7 @@ export class Subscription {
 	};
 
 	getDataString(mb) {
-		if (mb > 1000) {
+		if (mb >= 1000) {
 			return mb/1000 + " GB";	
 		} 
 		return mb + " MB";
